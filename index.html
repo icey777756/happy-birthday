@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>致 阿念 · 生日快乐</title>
+<meta name="description" content="有些话，当面说不出口，就写在这里了。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="致 阿念 · 生日快乐">
+<meta property="og:description" content="有些话，当面说不出口，就写在这里了。">
+<meta property="og:url" content="https://icey777756.github.io/happy-birthday/">
+<meta property="og:image" content="https://icey777756.github.io/happy-birthday/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23A85B3C'/%3E%3Ccircle cx='32' cy='32' r='25' fill='none' stroke='%23F7EFE3' stroke-opacity='.4'/%3E%3Ctext x='32' y='44' font-size='30' text-anchor='middle' fill='%23F7EFE3' font-family='serif'%3E%E5%BF%B5%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --paper:#F7F2E7;
+    --paper-2:#FBF7EE;
+    --ink:#3B332A;
+    --ink-soft:#6B6155;
+    --ink-faint:#9A8F80;
+    --accent:#A85B3C;
+    --gold:#C9A227;
+    --line:rgba(59,51,42,.14);
+    --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","SimSun",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body.locked{overflow:hidden;height:100vh}
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  /* ---------- 信封 ---------- */
+  .gate{
+    position:fixed;inset:0;z-index:50;
+    display:grid;place-items:center;
+    background:var(--paper);
+    transition:opacity 1s ease,visibility 1s;
+  }
+  .gate.opened{opacity:0;visibility:hidden;pointer-events:none}
+
+  .env-wrap{display:flex;flex-direction:column;align-items:center;gap:34px}
+  .env-btn{
+    border:0;background:none;padding:0;cursor:pointer;
+    width:min(78vw,368px);aspect-ratio:1.5/1;
+    position:relative;perspective:1000px;
+    transition:transform .7s cubic-bezier(.2,.7,.3,1);
+    font-family:inherit;
+  }
+  .env-btn:hover{transform:translateY(-5px)}
+  .env-body{
+    position:absolute;inset:0;border-radius:5px;
+    background:#EADFC5;overflow:hidden;
+    border:1px solid rgba(59,51,42,.16);
+    box-shadow:0 14px 34px -18px rgba(59,51,42,.5),0 2px 6px rgba(59,51,42,.06);
+    z-index:2;
+  }
+  .env-body::before{
+    content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(160deg,rgba(255,255,255,.38),rgba(255,255,255,0) 58%);
+  }
+  .fold{position:absolute;inset:0}
+  .fold-b{clip-path:polygon(0 100%,100% 100%,50% 50%);background:#E4D5B5}
+  .fold-l{clip-path:polygon(0 0,0 100%,50% 50%);background:#EFE5CD}
+  .fold-r{clip-path:polygon(100% 0,100% 100%,50% 50%);background:#EFE5CD}
+  .env-name{
+    position:absolute;left:0;right:0;top:71%;text-align:center;
+    font-size:clamp(14px,3.4vw,16px);letter-spacing:.26em;
+    color:var(--ink-soft);z-index:5;pointer-events:none;
+  }
+  .flap-wrap{
+    position:absolute;left:0;right:0;top:0;height:50%;
+    transform-origin:top center;transform-style:preserve-3d;
+    transition:transform .8s cubic-bezier(.4,0,.2,1) .1s;
+    z-index:4;
+  }
+  .flap{
+    position:absolute;inset:0;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    background:#E0D2B3;
+  }
+  .flap::after{
+    content:"";position:absolute;inset:0;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(255,255,255,0) 70%);
+  }
+  .seal{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:46px;height:46px;border-radius:50%;
+    background:var(--accent);color:#F7EFE3;
+    display:grid;place-items:center;
+    font-size:16px;letter-spacing:.04em;
+    box-shadow:0 4px 14px -4px rgba(168,91,60,.7),inset 0 -2px 6px rgba(0,0,0,.18);
+    z-index:6;transition:opacity .4s ease,transform .4s ease;
+  }
+  .seal::after{
+    content:"";position:absolute;inset:4px;border-radius:50%;
+    border:1px solid rgba(247,239,227,.35);
+  }
+  .env-btn.opening .seal{opacity:0;transform:translate(-50%,-50%) scale(.6)}
+  .env-btn.opening .flap-wrap{transform:rotateX(-170deg)}
+  .gate.opened .env-btn{transform:scale(1.12);opacity:0;transition:transform 1s ease,opacity .9s ease}
+
+  .gate-hint{
+    font-family:var(--sans);font-size:12px;letter-spacing:.3em;
+    color:var(--ink-faint);animation:breathe 3s ease-in-out infinite;
+  }
+  @keyframes breathe{0%,100%{opacity:.4}50%{opacity:1}}
+
+  /* ---------- 正文 ---------- */
+  .page{opacity:0;transition:opacity 1.2s ease;position:relative;z-index:2}
+  .page.show{opacity:1}
+  main{
+    max-width:620px;margin:0 auto;
+    padding:0 28px 140px;
+  }
+  section{padding:96px 0}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.3,1)}
+  .rv.in{opacity:1;transform:none}
+
+  .hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+  @supports (height:1dvh){.hero{min-height:92dvh}}
+  .gate{min-height:100vh}
+  @supports (height:1dvh){.gate{height:100dvh}}
+  .kicker{
+    font-family:var(--sans);font-size:12px;letter-spacing:.34em;
+    color:var(--ink-faint);margin-bottom:34px;
+  }
+  .hero h1{
+    font-size:clamp(30px,7.6vw,44px);font-weight:400;
+    letter-spacing:.06em;line-height:1.5;
+  }
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .rule{
+    display:flex;align-items:center;gap:14px;margin:44px 0 30px;
+    color:var(--ink-faint);
+  }
+  .rule i{display:block;width:52px;height:1px;background:var(--line)}
+  .rule b{display:block;width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:.7}
+  .hero p{font-size:clamp(14px,3.4vw,15.5px);color:var(--ink-soft);letter-spacing:.14em;line-height:2.2}
+  .scroll-hint{
+    margin-top:70px;font-family:var(--sans);font-size:11px;letter-spacing:.26em;
+    color:var(--ink-faint);animation:breathe 3s ease-in-out infinite;
+  }
+
+  .letter p{
+    font-size:clamp(15.5px,3.9vw,17px);
+    line-height:2.25;letter-spacing:.03em;
+    margin-bottom:1.9em;color:var(--ink);
+  }
+  .letter p:last-child{margin-bottom:0}
+  .letter .lead{font-size:clamp(16.5px,4.1vw,18px);color:var(--ink)}
+  .letter .mark{color:var(--accent)}
+
+  .things{padding-top:20px}
+  .things-title{
+    font-family:var(--sans);font-size:12px;letter-spacing:.3em;
+    color:var(--ink-faint);margin-bottom:44px;
+  }
+  .thing{
+    display:flex;gap:22px;padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .thing:last-child{border-bottom:1px solid var(--line)}
+  .thing .num{
+    flex:none;font-size:15px;color:var(--accent);
+    letter-spacing:.1em;padding-top:3px;opacity:.85;
+  }
+  .thing p{font-size:clamp(15px,3.7vw,16.5px);line-height:2;color:var(--ink)}
+
+  .wish{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .wish .kicker{margin-bottom:60px}
+  .cake{position:relative;width:150px;height:152px;margin-bottom:44px}
+  .candle{
+    position:absolute;left:50%;bottom:56px;transform:translateX(-50%);
+    width:9px;height:46px;border-radius:2px;
+    background:repeating-linear-gradient(180deg,#E8C87D 0 7px,#D9B463 7px 14px);
+    box-shadow:inset -2px 0 3px rgba(120,80,30,.18);
+  }
+  .wick{
+    position:absolute;left:50%;bottom:100px;transform:translateX(-50%);
+    width:1.5px;height:8px;background:#4A4038;
+  }
+  .flame{
+    position:absolute;left:50%;bottom:106px;
+    width:14px;height:21px;transform:translateX(-50%);
+    border-radius:50% 50% 46% 46% / 66% 66% 34% 34%;
+    background:radial-gradient(ellipse at 50% 74%,#FFF3D0 0%,#F5B84B 46%,#E8892F 100%);
+    box-shadow:0 0 26px 8px rgba(240,163,60,.32),0 0 60px 22px rgba(240,163,60,.14);
+    transform-origin:bottom center;
+    animation:flicker 2.1s ease-in-out infinite;
+    transition:opacity .5s ease;
+  }
+  @keyframes flicker{
+    0%,100%{transform:translateX(-50%) scale(1) rotate(-1deg)}
+    30%{transform:translateX(-52%) scale(1.06,.95) rotate(1.5deg)}
+    60%{transform:translateX(-48%) scale(.95,1.07) rotate(-2deg)}
+  }
+  .smoke{
+    position:absolute;left:50%;bottom:104px;width:2px;height:26px;
+    transform:translateX(-50%);opacity:0;
+    background:linear-gradient(180deg,rgba(150,140,128,.5),rgba(150,140,128,0));
+    filter:blur(1.5px);
+  }
+  .cake.out .flame{animation:none;opacity:0;transform:translateX(-50%) scale(.2)}
+  .cake.out .smoke{animation:rise 2.4s ease-out forwards}
+  @keyframes rise{
+    0%{opacity:0;transform:translate(-50%,0) scaleY(.4)}
+    25%{opacity:.85}
+    100%{opacity:0;transform:translate(-50%,-52px) scaleY(1.5)}
+  }
+  .cake-body{
+    position:absolute;left:50%;bottom:20px;transform:translateX(-50%);
+    width:122px;height:44px;border-radius:4px 4px 6px 6px;
+    background:linear-gradient(180deg,#F1E0C6 0%,#E6CDA9 100%);
+    box-shadow:inset 0 -9px 0 rgba(168,91,60,.10),0 2px 5px rgba(59,51,42,.06);
+  }
+  .cake-body::before{
+    content:"";position:absolute;left:-5px;right:-5px;top:-8px;height:17px;
+    border-radius:50%;background:#F9EFDB;
+    box-shadow:inset 0 -2px 3px rgba(59,51,42,.06);
+  }
+  .cake-body::after{
+    content:"";position:absolute;left:14px;right:14px;top:16px;height:2px;
+    background:rgba(168,91,60,.18);border-radius:2px;
+  }
+  .cake-plate{
+    position:absolute;left:50%;bottom:11px;transform:translateX(-50%);
+    width:154px;height:9px;border-radius:50%;
+    background:#D6C5A6;
+  }
+  .wish h2{font-size:clamp(19px,4.6vw,22px);font-weight:400;letter-spacing:.14em;margin-bottom:34px}
+  .btn{
+    font-family:inherit;font-size:14px;letter-spacing:.18em;
+    padding:13px 34px;border-radius:999px;cursor:pointer;
+    border:1px solid var(--accent);color:var(--accent);background:transparent;
+    transition:background .35s ease,color .35s ease,opacity .35s ease;
+  }
+  .btn:hover{background:var(--accent);color:#FBF3E6}
+  .btn:disabled{cursor:default;border-color:var(--line);color:var(--ink-faint)}
+  .btn:disabled:hover{background:transparent;color:var(--ink-faint)}
+  .wish-note{
+    margin-top:34px;font-size:14px;color:var(--ink-soft);letter-spacing:.1em;
+    opacity:0;transition:opacity 1s ease .3s;
+  }
+  .wish-note.in{opacity:1}
+
+  .finale{text-align:center;padding:110px 0 40px}
+  .finale .big{
+    font-size:clamp(38px,10vw,58px);letter-spacing:.16em;
+    line-height:1.6;color:var(--ink);
+  }
+  .finale .big span{display:block}
+  .finale .sub{
+    margin-top:40px;font-size:clamp(14px,3.5vw,15.5px);
+    color:var(--ink-soft);letter-spacing:.16em;line-height:2.2;
+  }
+  .sign{
+    margin-top:78px;display:flex;flex-direction:column;align-items:flex-end;gap:12px;
+  }
+  .sign .line{width:64px;height:1px;background:var(--line)}
+  .sign p{font-size:14px;color:var(--ink-soft);letter-spacing:.14em}
+  footer{
+    text-align:center;font-family:var(--sans);font-size:11px;
+    letter-spacing:.24em;color:var(--ink-faint);padding-bottom:56px;
+  }
+  #fx{position:fixed;inset:0;pointer-events:none;z-index:60}
+
+  @media (max-width:480px){
+    main{padding:0 24px 110px}
+    section{padding:76px 0}
+    .thing{gap:16px;padding:22px 0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition-duration:.01ms!important}
+    .rv{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body class="locked">
+
+<canvas id="fx"></canvas>
+
+<div class="gate" id="gate">
+  <div class="env-wrap">
+    <button class="env-btn" id="envBtn" aria-label="打开信封">
+      <div class="env-body">
+        <div class="fold fold-b"></div>
+        <div class="fold fold-l"></div>
+        <div class="fold fold-r"></div>
+      </div>
+      <div class="env-name">致 阿念</div>
+      <div class="flap-wrap"><div class="flap"></div></div>
+      <div class="seal">念</div>
+    </button>
+    <p class="gate-hint">轻 点 信 封</p>
+  </div>
+</div>
+
+<div class="page" id="page">
+  <main>
+
+    <!-- 替换区 1：名字与日期。这里的「阿念」、信封上的 env-name、火漆印 seal、页面 title 与 og:title 一起改 -->
+    <section class="hero">
+      <p class="kicker rv">二〇二六 · 冬</p>
+      <h1 class="rv">阿念，<em>生日快乐</em></h1>
+      <div class="rule rv"><i></i><b></b><i></i></div>
+      <p class="rv">有些话，当面说不出口<br>就写在这里了</p>
+      <p class="scroll-hint">往 下 看</p>
+    </section>
+
+    <!-- 替换区 2：长信正文。每段是一个 <p class="rv">，想多加一段就复制整行；<span class="mark"> 里的字会变成赭红 -->
+    <section class="letter">
+      <p class="lead rv">认识你这么多年，我好像从来没有认真跟你说过——认识你，是件挺幸运的事。</p>
+      <p class="rv">你总是那个先问别人「还好吗」的人。你大概不知道，有好几次，我是靠着你随口的一句话，才把那天熬过去的。</p>
+      <p class="rv">你不太会讲漂亮话，但你记得住别人随口提过的小事。这一点，我学了很久，也没学会。</p>
+      <p class="rv">所以今天想跟你说的是：<span class="mark">你可以不用一直那么懂事。</span>累了就说累，难过就说难过，不用每次都先照顾别人的情绪。</p>
+      <p class="rv">你已经在很多人的日子里，做过那个撑着的人了。今天，换我们来撑你一下。</p>
+    </section>
+
+    <!-- 替换区 3：三件小事。num 是一二三的序号，p 里写只有你们懂的具体细节——这一块最值得认真改 -->
+    <section class="things">
+      <p class="things-title rv">关于你的三件小事</p>
+      <div class="thing rv">
+        <span class="num">一</span>
+        <p>那次你说「我陪你」，语气特别随便，好像只是顺口。但我记到现在。</p>
+      </div>
+      <div class="thing rv">
+        <span class="num">二</span>
+        <p>你笑起来会先皱一下鼻子，你自己应该完全不知道。挺好看的。</p>
+      </div>
+      <div class="thing rv">
+        <span class="num">三</span>
+        <p>你总说自己没什么优点——这大概是你唯一的缺点。</p>
+      </div>
+    </section>
+
+    <section class="wish">
+      <p class="kicker rv">按老规矩</p>
+      <div class="cake rv" id="cake">
+        <div class="flame"></div>
+        <div class="smoke"></div>
+        <div class="wick"></div>
+        <div class="candle"></div>
+        <div class="cake-body"></div>
+        <div class="cake-plate"></div>
+      </div>
+      <h2 class="rv">先许个愿</h2>
+      <button class="btn rv" id="blowBtn">吹 灭 蜡 烛</button>
+      <p class="wish-note" id="wishNote">愿望说出来就不灵了，所以我不问。</p>
+    </section>
+
+    <section class="finale">
+      <div class="big rv"><span>生日</span><span>快乐</span></div>
+      <p class="sub rv">愿你今年少一点硬撑<br>多一点心想事成</p>
+      <div class="sign rv">
+        <div class="line"></div>
+        <p>—— 你的朋友</p>
+      </div>
+    </section>
+
+    <footer>二〇二六年十一月二日</footer>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var gate = document.getElementById('gate');
+  var envBtn = document.getElementById('envBtn');
+  var page = document.getElementById('page');
+  var opened = false;
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+
+  function observeAll(){
+    var items = page.querySelectorAll('.rv');
+    items.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i * 60, 360) + 'ms';
+      io.observe(el);
+    });
+  }
+
+  envBtn.addEventListener('click', function(){
+    if(opened) return;
+    opened = true;
+    envBtn.classList.add('opening');
+    setTimeout(function(){ gate.classList.add('opened'); }, 720);
+    setTimeout(function(){
+      document.body.classList.remove('locked');
+      page.classList.add('show');
+      observeAll();
+    }, 1350);
+  });
+
+  var cake = document.getElementById('cake');
+  var blowBtn = document.getElementById('blowBtn');
+  var wishNote = document.getElementById('wishNote');
+
+  blowBtn.addEventListener('click', function(){
+    if(blowBtn.disabled) return;
+    cake.classList.add('out');
+    blowBtn.disabled = true;
+    blowBtn.textContent = '愿 望 已 许';
+    setTimeout(function(){
+      wishNote.classList.add('in');
+      burst();
+    }, 500);
+  });
+
+  var canvas = document.getElementById('fx');
+  var ctx = canvas.getContext('2d');
+  var parts = [], raf = null, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var COLORS = ['#A85B3C','#C9A227','#D98E6A','#8C9A6E','#E8C87D','#B97A56'];
+
+  function resize(){
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function burst(){
+    var r = cake.getBoundingClientRect();
+    var cx = r.left + r.width/2;
+    var cy = r.top + r.height * 0.25;
+    for(var i=0;i<130;i++){
+      parts.push({
+        x:cx, y:cy,
+        vx:(Math.random()-0.5)*11,
+        vy:-Math.random()*12 - 2.5,
+        g:0.26 + Math.random()*0.12,
+        w:3 + Math.random()*5,
+        h:2 + Math.random()*4,
+        rot:Math.random()*Math.PI*2,
+        vr:(Math.random()-0.5)*0.3,
+        c:COLORS[i % COLORS.length],
+        life:1
+      });
+    }
+    if(!raf) tick();
+  }
+
+  function tick(){
+    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+    for(var i=parts.length-1;i>=0;i--){
+      var p = parts[i];
+      p.vy += p.g;
+      p.vx *= 0.995;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.vr;
+      if(p.y > window.innerHeight + 60 || p.x < -80 || p.x > window.innerWidth + 80){
+        parts.splice(i,1);
+        continue;
+      }
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle = p.c;
+      ctx.globalAlpha = 0.92;
+      ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      ctx.restore();
+    }
+    if(parts.length){
+      raf = requestAnimationFrame(tick);
+    }else{
+      raf = null;
+      ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+    }
+  }
+})();
+</script>
+</body>
+</html>
