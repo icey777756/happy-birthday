@@ -132,13 +132,13 @@
   .page.show{opacity:1}
   main{
     max-width:620px;margin:0 auto;
-    padding:0 28px 140px;
+    padding:0 28px 90px;
   }
-  section{padding:96px 0}
+  section{padding:34px 0}
   .rv{opacity:0;transform:translateY(26px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.3,1)}
   .rv.in{opacity:1;transform:none}
 
-  .hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+  .hero{min-height:86vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
   @supports (height:1dvh){.hero{min-height:92dvh}}
   .gate{min-height:100vh}
   @supports (height:1dvh){.gate{height:100dvh}}
@@ -357,6 +357,89 @@
     .rv{opacity:1!important;transform:none!important;transition:none!important}
     .scroll-hint,.gate-hint{animation:none!important}
   }
+
+  /* ---------- 长信版式 ---------- */
+  .chap{display:flex;align-items:center;gap:14px;margin:0 0 42px;color:var(--accent)}
+  .chap .n{font-size:14px;letter-spacing:.1em;opacity:.9}
+  .chap .l{height:1px;width:72px;background:rgba(168,91,60,.35)}
+  .chap .t{font-family:var(--sans);font-size:11px;letter-spacing:.34em;color:var(--ink-faint)}
+
+  .prose p{font-size:clamp(15.5px,3.9vw,17px);line-height:2.05;letter-spacing:.02em;margin-bottom:.6em;color:var(--ink)}
+  .prose p:last-child{margin-bottom:0}
+  .prose .hi{color:var(--accent)}
+  .open-line{font-size:clamp(19px,4.6vw,22px)!important;letter-spacing:.06em!important;margin-bottom:.6em!important}
+
+  .beat{display:flex;justify-content:center;padding:32px 0 28px}
+  .beat p{writing-mode:vertical-rl;text-orientation:upright;
+    font-size:clamp(18px,4.2vw,22px);letter-spacing:.44em;line-height:1.9;
+    color:var(--accent);opacity:.92}
+
+  .qs{margin:20px 0 18px;padding-left:22px;border-left:1px solid rgba(168,91,60,.3)}
+  .qs p{font-size:clamp(15px,3.7vw,16.5px);line-height:2.05;margin-bottom:.85em;color:var(--ink-soft)}
+  .qs p:last-child{margin-bottom:0}
+
+  .pull{margin:32px 0;padding-left:24px;border-left:2px solid var(--accent)}
+  .pull p{font-size:clamp(17.5px,4.3vw,20.5px);line-height:2;letter-spacing:.04em;color:var(--ink)}
+  .pull p+p{margin-top:.5em}
+
+  .duo{display:grid;grid-template-columns:1fr 1fr;column-gap:34px;margin:26px 0}
+  .duo .side{padding:9px 0}
+  .duo .side .tag{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.3em;color:var(--ink-faint);margin-bottom:9px}
+  .duo .side p{font-size:clamp(14.5px,3.6vw,15.8px);line-height:2;letter-spacing:.02em}
+  .duo .side.k p{color:var(--ink-soft)}
+  .duo .side.m p{color:var(--ink)}
+  .duo .side.m .tag{color:var(--accent);opacity:.8}
+
+  .cheer{margin:38px 0 0;text-align:center}
+  .cheer p{font-size:clamp(21px,5.4vw,27px);letter-spacing:.2em;line-height:1.85;color:var(--ink)}
+  .cheer p em{font-style:normal;color:var(--accent)}
+  .thanks{margin-top:34px;text-align:center}
+  .thanks span{display:block;font-size:clamp(16.5px,4.1vw,19.5px);line-height:2.1;letter-spacing:.1em;color:var(--ink)}
+  .thanks span+span{color:var(--accent)}
+  .ps{margin-top:66px;padding-top:26px;border-top:1px dashed rgba(59,51,42,.2);
+    font-size:clamp(14px,3.6vw,15.5px);line-height:2.1;color:var(--ink-soft)}
+
+  @media (max-width:560px){
+    .duo{grid-template-columns:1fr;column-gap:0}
+    .duo .side{padding:7px 0}
+    .duo .side.m{padding-bottom:16px;padding-left:16px;border-left:1px solid rgba(168,91,60,.18)}
+    .beat{padding:40px 0 34px}
+  }
+
+
+  /* ---------- 细节美化 ---------- */
+  body::after{
+    content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(115% 90% at 50% 34%,rgba(59,51,42,0) 42%,rgba(59,51,42,.055) 100%);
+  }
+  .drop::first-letter{
+    float:left;font-size:3.15em;line-height:.92;
+    margin:.06em .1em 0 0;color:var(--accent);
+  }
+  .pull{
+    padding:16px 26px 16px 24px;
+    background:linear-gradient(90deg,rgba(168,91,60,.05),rgba(168,91,60,0) 78%);
+    border-radius:0 8px 8px 0;
+  }
+  .beat{position:relative}
+  .beat::before{
+    content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:190px;height:190px;border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle,rgba(168,91,60,.06),rgba(168,91,60,0) 68%);
+  }
+  .cheer p em{
+    background:linear-gradient(180deg,rgba(201,162,39,0) 58%,rgba(201,162,39,.26) 58%);
+    padding:0 .04em;
+  }
+  .thanks span+span{position:relative}
+  .thanks span+span::after{
+    content:"";position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);
+    width:26px;height:1px;background:rgba(168,91,60,.35);
+  }
+  footer::before{
+    content:"";display:block;width:22px;height:1px;margin:0 auto 18px;
+    background:rgba(59,51,42,.2);
+  }
 </style>
 </head>
 <body class="locked">
@@ -385,38 +468,113 @@
 
     <!-- 替换区 1：名字。这里的「西洲」、信封 env-name、火漆印 seal、title 与 og:title 要一起改 -->
     <section class="hero">
-      <p class="kicker rv">二〇二六 · 冬</p>
+      <p class="kicker rv">二〇二六 · 秋</p>
       <h1 class="rv">西洲，<em>好久不见</em></h1>
       <div class="rule rv"><i></i><b></b><i></i></div>
       <p class="rv">西洲西洲我們喜歡你</p>
       <p class="scroll-hint">往 下 看</p>
     </section>
 
-    <!-- 替换区 2：长信正文。每段是一个 <p class="rv">，想多加一段就复制整行；<span class="mark"> 里的字会变成赭红 -->
-    <section class="letter">
-      <p class="lead rv">认识你这么多年，我好像从来没有认真跟你说过——认识你，是件挺幸运的事。</p>
-      <p class="rv">你总是那个先问别人「还好吗」的人。你大概不知道，有好几次，我是靠着你随口的一句话，才把那天熬过去的。</p>
-      <p class="rv">你不太会讲漂亮话，但你记得住别人随口提过的小事。这一点，我学了很久，也没学会。</p>
-      <p class="rv">所以这封信想说的是：<span class="mark">你可以不用一直那么懂事。</span>累了就说累，难过就说难过，不用每次都先照顾别人的情绪。</p>
-      <p class="rv">你已经在很多人的日子里，做过那个撑着的人了。这次，换我们来撑你一下。</p>
+    <section class="prose">
+      <p class="open-line drop rv">嗨，西洲。</p>
+      <p class="rv">半年未见，最近过得怎么样？朋友们都怎么样了？妈妈的餐馆生意怎么样，有没有研发新菜品呀？和向南风感情怎么样，有没有受委屈呀？</p>
+      <p class="rv">我想，你的厨艺肯定进步了吧。</p>
     </section>
 
-    <!-- 替换区 3：三件小事。num 是一二三的序号，p 里写只有你们懂的具体细节——这一块最值得认真改 -->
-    <section class="things">
-      <p class="things-title rv">关于你的三件小事</p>
-      <div class="thing rv">
-        <span class="num">一</span>
-        <p>那次你说「我陪你」，语气特别随便，好像只是顺口。但我记到现在。</p>
+    <section>
+      <div class="prose">
+        <p class="rv">你说，只要用真货的态度对待假货，假的也会变成真的。</p>
+        <p class="rv">那么——你是真的喜欢名牌，享受奢侈品带给你高人一等的满足感吗？</p>
+        <p class="rv"><span class="hi">不是的。</span></p>
+        <p class="rv">所有的所有，都是在生活里跌跌撞撞，却还是不肯认输的铠甲；更是你掩饰敏感、脆弱、没有安全感的保护壳。</p>
+        <p class="rv">黑冠鳽伸长脖子、展开羽毛，装作自己很强大的原因，从来都只是想保护自己而已。</p>
       </div>
-      <div class="thing rv">
-        <span class="num">二</span>
-        <p>你笑起来会先皱一下鼻子，你自己应该完全不知道。挺好看的。</p>
+      <div class="beat rv"><p>它是，你也是。</p></div>
+    </section>
+
+    <section>
+      <div class="prose">
+        <p class="rv">其实西洲，你也很辛苦吧。一个人租在连太阳都晒不到的房子里。</p>
+        <p class="rv">你那么敏感，那么要强。放下所有的自尊和骄傲，向他坦白一切、说出自己全部难堪过往的时候——又在想什么呢？</p>
       </div>
-      <div class="thing rv">
-        <span class="num">三</span>
-        <p>你总说自己没什么优点——这大概是你唯一的缺点。</p>
+      <div class="qs rv">
+        <p>会害怕坦白一切之后，他会彻底放弃你吗？</p>
+        <p>会想试图得到一点点原谅的可能吗？</p>
+      </div>
+      <div class="prose">
+        <p class="rv">可这么多年，你自己过得也不容易啊。考试失利，考上成人本科；明明这么认真努力，工作那么久还是没能升职；其实欺骗向南风的时候，你心里也不好受吧。</p>
+        <p class="rv">你总是这样——明明很累、很难过、很压抑、很委屈，却要装作没事，装作一切都很好。</p>
+        <p class="rv">这么多年，一个人痛苦压抑地生活着，你又可以找谁倾诉呢？回到空无一人、冰冷潮湿的家里，又有谁能抱抱你呢？流的那行泪里面，有没有一点点委屈呢。</p>
+        <p class="rv"><span class="hi">有吗？有吧。你当然可以有。</span></p>
       </div>
     </section>
+
+    <section>
+      <div class="prose">
+        <p class="rv">人都不是绝对完美的。</p>
+        <p class="rv">你敏感、倔强，会因为别人偶尔的一句话就偷偷难过、想很多。情绪上头的时候会说很难听的气话；有关自尊心的很多事情，宁可自己吃亏憋着，也不会主动去和别人表达沟通。</p>
+      </div>
+      <div class="pull rv">
+        <p>但那又怎样呢？</p>
+        <p>你不必什么都做得很好，才值得被人珍惜。</p>
+        <p>你也不必先成为一个足够优秀的大人，才有资格得到爱。</p>
+      </div>
+      <div class="prose">
+        <p class="rv">爱的人会在看见你的全部之后，依然选择站在你身边。</p>
+        <p class="rv">就像你和妈妈说了很多别扭的话，她依旧爱你；就像你和闺蜜说了气话之后，她依旧真心对你；就像你和向南风坦白一切之后，他依旧选择继续爱你。</p>
+        <p class="rv"><span class="hi">大家爱你，继续爱你，从来都不是因为名牌，不是因为你爸爸很有钱——而是因为你就是任西洲。</span></p>
+        <p class="rv">更何况你也是一个很善良很温暖的人，会为了朋友仗义执言挺身而出，虽然嘴上不说，但是会默默为妈妈做很多事。在感受到被爱之后，你明显变得越来越柔软，更愿意坦诚表达自己的心意了，说话做事会更考虑别人的感受了。</p>
+        <p class="rv">你的成长进步，我都有看到。你真的好棒。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="prose">
+        <p class="rv">我总说我喜欢西洲，很喜欢，特别喜欢，最最最喜欢。</p>
+        <p class="rv">除了剧本很好、导演拍得很好，还有你细腻灵动的演技等等客观因素以外，还有就是——不知道为什么，在西洲身上，我看到你的影子。</p>
+      </div>
+      <div class="prose">
+        <p class="rv">西洲一个人去城市工作，几年不回家。你十六岁就离开家，一个人在异国他乡打拼，又有几年是回家过的年。西洲住在没有阳光的出租屋里，只想有个睡的地方。你抱着小熊在北京租房，只是想要一个衣柜、一个洗手台、一个家。西洲高考失利，工作不顺心。你十七岁参加选秀没能成团，不得已转型演员。报喜不报忧，敏感内耗，没有安全感。一个人孤单、只能抱着小熊哭的时候，又有谁在你身边抱抱你呢？明明很累、很难过、很委屈，还总说没事、一切都好。</p>
+        <p class="rv">西洲住的出租屋里，真的有太阳吗？</p>
+        <p class="rv"><span class="hi">陈昕葳又是从什么时候开始，睡觉怕黑、习惯留一点亮光的呢？</span></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="prose">
+        <p class="rv">西洲很成熟，很坚硬。她不得不——不得不逼自己变得更坚强、更强大。只有这样才能保护自己不受欺负，才能给自己一点点继续努力前进的勇气。</p>
+      </div>
+      <div class="beat rv"><p>可是葳葳，你也不是这样吗？</p></div>
+      <div class="prose">
+        <p class="rv">这么多年，一个人走了这么远的路。你真的变得更优秀，也更强大、更自洽了。</p>
+        <p class="rv">当然，爱不是人生唯一的答案。你可以因为向南风的出现，重新看见自己柔软的一面，慢慢学会坦诚地表达自己的心意。但更重要的是——即使没有任何人替你证明，你也要慢慢相信自己。</p>
+      </div>
+      <div class="pull rv">
+        <p>相信你值得被爱。</p>
+        <p>不是因为有人爱你，而是因为你本身就值得。</p>
+      </div>
+      <div class="prose">
+        <p class="rv">那些不够完美的部分，组成了今天的你。那些没有被善待的时刻，也没有夺走你重新获得幸福的权利。</p>
+        <p class="rv">所以呢——你不必因为曾经受过伤，就一辈子穿着铠甲；也不必因为害怕再次失去，就提前做好离开的准备。</p>
+        <p class="rv"><span class="hi">你可以试着相信别人，更可以试着相信自己。</span></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="prose">
+        <p class="open-line rv">西洲宝宝，你已经很棒、很勇敢了。</p>
+        <p class="rv">你已经一个人走了很远很远的路。接下来，慢慢走也没关系。</p>
+      </div>
+      <div class="cheer">
+        <p class="rv">我<em>理解</em>你</p>
+        <p class="rv">我<em>喜欢</em>你</p>
+        <p class="rv">我<em>夸夸</em>你</p>
+        <p class="rv">我<em>抱抱</em>你</p>
+      </div>
+      <div class="thanks rv">
+        <span>感谢你成为任西洲</span>
+        <span>感谢你成为陈昕葳</span>
+      </div>    </section>
 
     <section class="wish">
       <p class="kicker rv">顺便</p>
@@ -442,17 +600,7 @@
       <button class="btn rv" id="tapBtn">轻 摇 一 下</button>
       <p class="wish-note" id="wishNote">它们游得很慢，但一直在。</p>
     </section>
-
-    <section class="finale">
-      <div class="big rv"><span>见字如面</span><span>纸短情长</span></div>
-      <p class="sub rv">下次见面<br>把没说完的话说完</p>
-      <div class="sign rv">
-        <div class="line"></div>
-        <p>—— 你的朋友</p>
-      </div>
-    </section>
-
-    <footer>二〇二六年十一月</footer>
+    <footer>十月二十六日</footer>
 
   </main>
 </div>
